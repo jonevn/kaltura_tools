@@ -1,0 +1,13 @@
+<?php
+
+define("API_URL", "https://api.example.com");
+define("ADMIN_SECRET", "00000000000000000000000000000000");
+define("USER_ID", "user@example.com");
+define("PARTNER_ID", "10");
+
+define("ND_API_URL", "https://api.example.net");
+define("ND_ADMIN_SECRET", "00000000000000000000000000000000");
+define("ND_USER_ID", "user@example.net");
+define("ND_PARTNER_ID", "20");
+
+
