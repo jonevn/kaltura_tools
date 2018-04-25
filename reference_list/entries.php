@@ -53,8 +53,8 @@ if ($timeDelta == 0) {
 	$timeDelta = time();
 }
 
-$fh_ref = fopen("ref_to_id.csv", "w");
-$fh_id = fopen("id_to_ref.csv", "w");
+$fh_ref = fopen("entries_ref_to_id.csv", "w");
+$fh_id = fopen("entries_id_to_ref.csv", "w");
 
 $pager->pageSize = 300;
 
@@ -67,8 +67,8 @@ for ($timeRange = $timeFirst; ($timeLast + $timeDelta) > $timeRange; $timeRange 
 	while (count($result->objects)) {
 		foreach($result->objects as $o) {
 			if (strlen($o->referenceId) > 0) {
-				fprintf($fh_ref, "%s,%s\n", $o->referenceId, $o->id);
-				fprintf($fh_id, "%s,%s\n", $o->id, $o->referenceId);
+				fprintf($fh_ref, "%s,%s,%s\n", $o->referenceId, $o->id, $o->thumbnailUrl);
+				fprintf($fh_id, "%s,%s,%s\n", $o->id, $o->referenceId, $o->thumbnailUrl);
 			}
 		}
 		printf(" Fetching %d-%d of %d entries for date range %s - %s.   \r", $pager->pageIndex * $pager->pageSize, ($pager->pageIndex+1) * $pager->pageSize, $result->totalCount, date("c", $timeRange), date("c", $timeRange + ($timeDelta - 1)));
